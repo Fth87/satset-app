@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../core/app_controller.dart';
@@ -29,21 +28,24 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   controller.profile?.name ?? 'Unknown',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
                 const SizedBox(height: 8),
-                Chip(label: Text('ID: ${controller.profile?.id.substring(0, 8) ?? 'N/A'}')),
+                Chip(
+                  label: Text(
+                    'ID: ${controller.profile?.id.substring(0, 8) ?? 'N/A'}',
+                  ),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 16),
-          if (controller.profile != null) ProfileInfo(profile: controller.profile!),
+          if (controller.profile != null)
+            ProfileInfo(profile: controller.profile!),
           const SizedBox(height: 16),
-          MenuButton(
-            label: 'Storage & Sync',
-            icon: Icons.sync,
-            onTap: () => controller.go(AppScreen.syncManager),
-          ),
           MenuButton(
             label: 'System Preferences',
             icon: Icons.settings_outlined,
@@ -56,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           SecondaryButton(
-            label: 'Terminate Session',
+            label: 'Logout',
             icon: Icons.logout,
             onPressed: controller.logout,
           ),

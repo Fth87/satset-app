@@ -416,7 +416,7 @@ class _MapNavScreenState extends State<MapNavScreen> {
                 children: [
                   TileLayer(
                     urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    userAgentPackageName: 'com.example.ngetestaja',
+                    userAgentPackageName: 'com.example.satset',
                   ),
                   if (widget.controller.goingPoints.isNotEmpty)
                     PolylineLayer(

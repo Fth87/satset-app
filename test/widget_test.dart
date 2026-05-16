@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ngetestaja/main.dart';
+import 'package:satset/main.dart';
 
 void main() {
   testWidgets('shows logistics onboarding', (tester) async {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../core/app_controller.dart';
@@ -25,13 +24,6 @@ class SettingsScreen extends StatelessWidget {
           AppCard(
             child: Column(
               children: [
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: const Text('Color Mode'),
-                  value: controller.isDarkMode,
-                  onChanged: (_) => controller.toggleTheme(),
-                ),
-                const Divider(),
                 const ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text('Nav Audio Output'),
@@ -57,7 +49,10 @@ class SettingsScreen extends StatelessWidget {
               leading: const Icon(Icons.logout, color: Colors.red),
               title: const Text(
                 'Logout',
-                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               trailing: const Icon(Icons.chevron_right, color: Colors.red),
             ),
