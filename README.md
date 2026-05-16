@@ -2,7 +2,6 @@
 
 SatSet adalah platform manajemen logistik kurir mutakhir yang dirancang untuk mengoptimalkan operasional pengiriman barang melalui integrasi kecerdasan buatan dan algoritma optimasi rute. Sistem ini dikembangkan untuk meminimalisir input manual, mengurangi kesalahan pengiriman, dan memaksimalkan efisiensi waktu kurir di lapangan.
 
----
 
 ## Analisis Fitur Mendalam
 
@@ -30,7 +29,6 @@ Aplikasi menggunakan pola arsitektur yang memastikan konsistensi data visual:
 *   **Manajemen Titik Awal Kustom**: Kurir dapat menentukan lokasi awal (gudang/basecamp) secara dinamis dengan melakukan long-press pada peta, yang kemudian disimpan secara permanen di perangkat menggunakan Shared Preferences.
 *   **Shortcut Navigasi Cepat**: Fitur "Go to Delivery" memungkinkan kurir memusatkan peta ke lokasi paket tertentu dalam hitungan detik.
 
----
 
 ## Arsitektur Teknis dan Stack Teknologi
 
@@ -44,7 +42,6 @@ Aplikasi menggunakan pola arsitektur yang memastikan konsistensi data visual:
 *   **AI Engine**: Google Gemini API untuk pemrosesan bahasa alami (NLP) pada data manifest.
 *   **Routing Engine**: OpenRouteService (ORS) untuk optimasi rute (Vroom) dan layanan directions.
 
----
 
 ## Panduan Instalasi dan Konfigurasi
 
@@ -80,7 +77,6 @@ Aplikasi menggunakan pola arsitektur yang memastikan konsistensi data visual:
     flutter run
     ```
 
----
 
 ## Keamanan dan Optimalisasi Produksi
 
@@ -89,7 +85,6 @@ Aplikasi telah melewati proses pengerasan (hardening) untuk lingkungan produksi:
 *   **Android Build System**: Menggunakan Gradle dengan konfigurasi Kotlin DSL (`build.gradle.kts`) untuk manajemen dependensi yang lebih modern dan aman.
 *   **Obfuscation**: Variabel sensitif tidak disimpan dalam bentuk teks biasa di dalam kode aplikasi yang sudah dikompilasi.
 
----
 
 ## Struktur Proyek
 
@@ -99,7 +94,6 @@ Aplikasi telah melewati proses pengerasan (hardening) untuk lingkungan produksi:
 *   `lib/widgets/`: Komponen UI kustom yang dioptimalkan untuk penggunaan ulang.
 *   `assets/`: Aset statis seperti gambar dan ikon aplikasi.
 
----
 
 ## Kontribusi
 
