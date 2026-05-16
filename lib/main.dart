@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'core/app_controller.dart';
 import 'core/app_theme.dart';
+import 'core/constants.dart';
 import 'screens/app_shell.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: Constants.supabaseUrl,
+    anonKey: Constants.supabaseAnonKey,
+  );
   runApp(const SmartLogisticsApp());
 }
 
@@ -37,7 +45,7 @@ class _SmartLogisticsAppState extends State<SmartLogisticsApp> {
       builder: (context, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Smart Logistics',
+          title: 'SatSet',
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: _controller.isDarkMode ? ThemeMode.dark : ThemeMode.light,

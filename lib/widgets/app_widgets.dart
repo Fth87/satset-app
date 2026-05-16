@@ -9,8 +9,7 @@ const line = Color(0xFFE4E4E7);
 const surface = Color(0xFFF4F4F5);
 
 class AppHeader extends StatelessWidget {
-  const AppHeader({
-    super.key,
+  const AppHeader({super.key, 
     required this.title,
     this.backTo,
     this.trailing,
@@ -28,31 +27,39 @@ class AppHeader extends StatelessWidget {
       bottom: false,
       child: Container(
         color: Theme.of(context).colorScheme.surface,
-        padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-        child: Row(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+        height: 64,
+        child: Stack(
           children: [
-            SizedBox(
-              width: 48,
-              child: backTo == null
-                  ? null
-                  : IconButton(
-                      onPressed: () => controller.go(backTo!),
-                      icon: const Icon(Icons.chevron_left),
+            if (title.isNotEmpty)
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 80),
+                  child: Text(
+                    title.toUpperCase(),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 1.2,
                     ),
-            ),
-            Expanded(
-              child: Text(
-                title.toUpperCase(),
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1.2,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 48, child: trailing),
+            if (backTo != null)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  onPressed: () => controller.go(backTo!),
+                  icon: const Icon(Icons.chevron_left),
+                ),
+              ),
+            if (trailing != null)
+              Align(
+                alignment: Alignment.centerRight,
+                child: trailing,
+              ),
           ],
         ),
       ),
@@ -89,16 +96,21 @@ class AppCard extends StatelessWidget {
 }
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
-    super.key,
+  const PrimaryButton({super.key, 
     required this.label,
     required this.onPressed,
     this.icon,
+    this.isLoading = false,
+    this.isDisabled = false,
+    this.color,
   });
 
   final String label;
   final VoidCallback onPressed;
   final IconData? icon;
+  final bool isLoading;
+  final bool isDisabled;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -106,12 +118,25 @@ class PrimaryButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: FilledButton.icon(
-        onPressed: onPressed,
-        icon: icon == null ? const SizedBox.shrink() : Icon(icon, size: 18),
+        onPressed: (isLoading || isDisabled) ? null : onPressed,
+        icon: isLoading
+            ? const SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              )
+            : icon == null
+                ? const SizedBox.shrink()
+                : Icon(icon, size: 18),
         label: Text(label.toUpperCase()),
         style: FilledButton.styleFrom(
-          backgroundColor: ink,
+          backgroundColor: color ?? ink,
           foregroundColor: Colors.white,
+          disabledBackgroundColor: ink.withAlpha(128),
+          disabledForegroundColor: Colors.white70,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),
@@ -127,16 +152,17 @@ class PrimaryButton extends StatelessWidget {
 }
 
 class SecondaryButton extends StatelessWidget {
-  const SecondaryButton({
-    super.key,
+  const SecondaryButton({super.key, 
     required this.label,
     required this.onPressed,
     this.icon,
+    this.isDisabled = false,
   });
 
   final String label;
   final VoidCallback onPressed;
   final IconData? icon;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -148,8 +174,8 @@ class SecondaryButton extends StatelessWidget {
         icon: icon == null ? const SizedBox.shrink() : Icon(icon, size: 18),
         label: Text(label.toUpperCase()),
         style: OutlinedButton.styleFrom(
-          foregroundColor: ink,
-          side: const BorderSide(color: line),
+          foregroundColor: isDisabled ? muted : ink,
+          side: BorderSide(color: isDisabled ? line.withAlpha(128) : line),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),
@@ -187,8 +213,7 @@ class SectionLabel extends StatelessWidget {
 }
 
 class StatTile extends StatelessWidget {
-  const StatTile({
-    super.key,
+  const StatTile({super.key, 
     required this.value,
     required this.label,
     this.icon,

@@ -1,4 +1,5 @@
 enum PackageStatus { pending, clarification, delivered }
+enum UserRole { courier, dispatcher }
 
 class DeliveryPackage {
   const DeliveryPackage({
@@ -10,6 +11,7 @@ class DeliveryPackage {
     required this.eta,
     required this.confidence,
     required this.cluster,
+    this.phone,
   });
 
   final String id;
@@ -20,6 +22,7 @@ class DeliveryPackage {
   final String eta;
   final int confidence;
   final String cluster;
+  final String? phone;
 }
 
 class OperatorProfile {
@@ -28,12 +31,14 @@ class OperatorProfile {
     required this.id,
     required this.zone,
     required this.vehicle,
+    required this.role,
   });
 
   final String name;
   final String id;
   final String zone;
   final String vehicle;
+  final UserRole role;
 }
 
 class ChatMessage {
