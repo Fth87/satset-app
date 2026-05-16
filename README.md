@@ -95,6 +95,19 @@ Aplikasi telah melewati proses pengerasan (hardening) untuk lingkungan produksi:
 *   `assets/`: Aset statis seperti gambar dan ikon aplikasi.
 
 
+## Informasi Akun Tes
+
+Untuk menguji aplikasi, Anda dapat menggunakan akun berikut:
+
+**Courier Account**
+- *Email:* courier@test.com
+- *Password:* password123
+
+**Dispatcher Account**
+- *Email:* dispatcher@test.com
+- *Password:* password123
+
+
 ## Kontribusi
 
 Kontribusi untuk pengembangan SatSet sangat kami hargai. Jika Anda menemukan bug, memiliki saran fitur, atau ingin berkontribusi pada kode, silakan buka Issue atau kirimkan Pull Request melalui repositori resmi ini.
